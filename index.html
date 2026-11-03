@@ -95,7 +95,7 @@ footer{background:var(--ink);color:var(--faint);font-size:12px;padding-block:24p
     <div class="panel kpi"><div class="l">방문 차량 체류시간 중앙값</div><div class="v" id="k-dwell"></div><div class="n">통과 차량(10분 미만) 제외</div></div>
     <div class="panel kpi"><div class="l">급속 충전 1회 시간 중앙값</div><div class="v" id="k-fast"></div><div class="n" id="k-fast-n"></div></div>
     <div class="panel kpi"><div class="l">완속형 체류 비중</div><div class="v" id="k-slow"></div><div class="n" id="k-slow-n"></div></div>
-    <div class="panel kpi"><div class="l">확인된 기존 충전기</div><div class="v v-sm">급속 4 · 완속 34</div><div class="n">남2문·남4문 주차장</div></div>
+    <div class="panel kpi"><div class="l">확인된 기존 충전기</div><div class="v v-sm">급속 21 · 완속 41</div><div class="n">공원 내 주차장 · 환경공단 API</div></div>
   </div>
   <div class="panel verdict"><span class="pill" id="v-pill"></span><p id="v-text"></p></div>
 </section>
@@ -123,7 +123,7 @@ footer{background:var(--ink);color:var(--faint);font-size:12px;padding-block:24p
 
 <section id="sim">
   <p class="eyebrow">시뮬레이터</p><h2>가정값을 바꾸면 필요한 충전기 수가 바로 바뀝니다.</h2>
-  <p class="lead">전기차 비율과 충전 희망 비율을 움직여 기존 완속 34기가 언제 부족해지는지 확인합니다.</p>
+  <p class="lead">전기차 비율과 충전 희망 비율을 움직여 기존 완속 41기가 언제 부족해지는지 확인합니다.</p>
   <div class="two">
     <div class="panel ctrl">
       <div><label for="ev">전기차 비율 <output id="ev-o"></output></label><input id="ev" type="range" min="1" max="15" step="0.1" value="3.2"></div>
@@ -143,23 +143,24 @@ footer{background:var(--ink);color:var(--faint);font-size:12px;padding-block:24p
       <p class="note" id="r-cross"></p>
       <p class="note" id="r-kwh"></p>
       <div class="chart" id="c-sim" style="margin-top:8px"></div>
-      <div class="legend"><span><i style="background:var(--ink)"></i>필요 완속(선택한 기준일)</span><span><i style="background:var(--faint)"></i>기존 완속 34기</span></div>
+      <div class="legend"><span><i style="background:var(--ink)"></i>필요 완속(선택한 기준일)</span><span><i style="background:var(--faint)"></i>기존 완속 41기</span></div>
     </div>
   </div>
 </section>
 
 <section id="chargers">
-  <p class="eyebrow">기존 충전기</p><h2>확인된 충전기는 남쪽 주차장 두 곳에 있습니다.</h2>
-  <p class="lead">구역별 만차·혼잡 기록과 함께 보면 충전기가 없는 구역의 수요를 따져볼 수 있습니다.</p>
+  <p class="eyebrow">기존 충전기</p><h2>공원 충전기는 남쪽과 서쪽에 모여 있고, 급속이 21기입니다.</h2>
+  <p class="lead">한국환경공단 전기자동차 충전소 정보 API로 2026년 11월 3일 조회한 공원 내(올림픽로 424) 충전기입니다. 북쪽·동쪽 주차장에는 충전기가 없습니다.</p>
   <div class="two">
     <div class="panel tbl">
-      <table><thead><tr><th>주차장</th><th class="num">급속</th><th class="num">완속</th><th>확인 출처</th></tr></thead>
+      <table><thead><tr><th>주차장</th><th class="num">급속</th><th class="num">완속</th><th>운영기관</th></tr></thead>
       <tbody>
-        <tr><td>남2문 주차장</td><td class="num">4 (100kW)</td><td class="num">11 (7kW)</td><td>충전소 찾기 서비스</td></tr>
-        <tr><td>남4문 주차장</td><td class="num">0</td><td class="num">23</td><td>지도 서비스</td></tr>
-        <tr><td>그 외 주차장</td><td colspan="3">환경공단 충전소 정보 API 조회 후 반영</td></tr>
+        <tr><td>남4문 주차장</td><td class="num">11 (100·200kW)</td><td class="num">23 (7kW)</td><td>GS차지비, 기후에너지환경부</td></tr>
+        <tr><td>남2문 주차장</td><td class="num">9 (100kW)</td><td class="num">11 (7kW)</td><td>GS차지비, 기후에너지환경부</td></tr>
+        <tr><td>올림픽스포츠콤플렉스</td><td class="num">1 (50kW)</td><td class="num">7 (7kW)</td><td>GS차지비</td></tr>
+        <tr><td><b>합계</b></td><td class="num"><b>21</b></td><td class="num"><b>41</b></td><td></td></tr>
       </tbody></table>
-      <p class="note">남2문·남4문이 아래 어느 구역 코드에 해당하는지는 주차 안내도와 대조해 확정합니다.</p>
+      <p class="note">공원 안 호텔(파크텔) 전용 완속 5기와 인접 한성백제박물관 충전기는 제외했습니다. 각 주차장이 아래 어느 구역 코드에 해당하는지는 주차 안내도와 대조해 확정합니다.</p>
     </div>
     <div class="panel tbl">
       <table><thead><tr><th>구역</th><th class="num">만차</th><th class="num">혼잡</th><th class="num">원활</th><th class="num">만차 비율</th></tr></thead><tbody id="t-cong"></tbody></table>
@@ -193,7 +194,8 @@ footer{background:var(--ink);color:var(--faint);font-size:12px;padding-block:24p
         <li>한국체육산업개발_올림픽공원 입출차 정보 (2024.7)</li>
         <li>한국체육산업개발_주차장 혼잡도 정보</li>
         <li>한국환경공단_충전건별 충전량 합성데이터 (2025.1~6, 공원주차장 유형)</li>
-        <li>반영 예정: 입출차정보(전체구역) 2025, 입출차·공연·날씨 연계 데이터, 환경공단 전기자동차 충전소 정보</li>
+        <li>한국환경공단_전기자동차 충전소 정보 API (2026.11.3 조회, 송파구 5,700기 중 공원 내 62기)</li>
+        <li>반영 예정: 입출차정보(전체구역) 2025, 입출차·공연·날씨 연계 데이터</li>
       </ul>
       <p class="note">충전 이력은 합성데이터라 전국 평균 경향으로만 사용합니다. 전기차 비율은 방문객 거주지와 무관하게 서울 평균을 썼습니다.</p>
     </div>
@@ -210,7 +212,7 @@ const D=JSON.parse(document.getElementById('data').textContent);
 const $=id=>document.getElementById(id);
 const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 const fmt=n=>Math.round(n).toLocaleString('ko-KR');
-const EXIST_SLOW=34, EXIST_FAST=4;
+const EXIST_SLOW=41, EXIST_FAST=21;
 
 $('basis-period').textContent=`예비 데이터: 입출차 ${D.period[0]} ~ ${D.period[1]} · 방문 차량 ${fmt(D.quality.visits)}대`;
 $('k-dwell').textContent=D.dwell.median+'분';
@@ -293,15 +295,15 @@ function sim(){
   $('r-state').innerHTML=`<span class="pill ${cls}">${st}</span>`;
   const crossEv=EXIST_SLOW/(peak*wish)*100;
   const dayName={weekday_median:'평일 중앙값',weekend_median:'주말 중앙값',p95:'상위 5% 날'}[day];
-  $('r-cross').innerHTML=`${dayName} 기준, 충전 희망 ${Math.round(wish*100)}%라면 전기차 비율이 <span class="acc">${crossEv.toFixed(1)}%</span>를 넘을 때 기존 완속 34기로 부족해집니다.`;
-  $('r-kwh').textContent=`체류 중앙값 ${D.dwell.median}분 동안 완속 ${kw}kW로 충전할 수 있는 양은 약 ${(kw*D.dwell.median/60).toFixed(1)}kWh입니다. 급속 수요는 하루 약 ${fastH.toFixed(1)}시간 분량으로, 기존 급속 ${EXIST_FAST}기로 처리할 수 있는 규모입니다.`;
+  $('r-cross').innerHTML=`${dayName} 기준, 충전 희망 ${Math.round(wish*100)}%라면 전기차 비율이 <span class="acc">${crossEv.toFixed(1)}%</span>를 넘을 때 기존 완속 ${EXIST_SLOW}기로 부족해집니다.`;
+  $('r-kwh').textContent=`체류 중앙값 ${D.dwell.median}분 동안 완속 ${kw}kW로 충전할 수 있는 양은 약 ${(kw*D.dwell.median/60).toFixed(1)}kWh입니다. 급속 수요는 하루 약 ${fastH.toFixed(1)}시간 분량으로 급속 ${fast}기면 처리할 수 있어, 기존 급속 ${EXIST_FAST}기는 수요보다 많습니다.`;
   const pts=[];for(let e=1;e<=15;e+=0.5)pts.push([e,peak*e/100*wish]);
   const ymax=Math.max(60,Math.ceil(Math.max(...pts.map(p=>p[1]))/20)*20);const yt=[];for(let v=0;v<=ymax;v+=ymax>100?40:20)yt.push(v);
   drawLines('c-sim',[{c:'--ink',pts}],{label:'전기차 비율별 필요 완속 수',W:520,H:260,x0:1,x1:15,ymax,xt:[1,3,5,7,9,11,13,15],yt,xl:v=>v+'%',yl:v=>v,hlines:[{v:EXIST_SLOW,c:'--faint'}],
     tip:i=>`전기차 ${pts[i][0]}% → 완속 ${Math.ceil(pts[i][1])}기`});
   // 요약 판정
   const p=$('v-pill');p.className='pill '+cls;p.textContent=st;
-  $('v-text').innerHTML=`현재 가정(전기차 ${(ev*100).toFixed(1)}%, 충전 희망 ${Math.round(wish*100)}%, ${dayName})에서 공원 전체에 필요한 완속은 ${slow}기, 확인된 기존 완속은 ${EXIST_SLOW}기입니다. 전기차 비율 <span class="acc">${crossEv.toFixed(1)}%</span>부터 부족해지며, 충전기가 남쪽 주차장에만 있어 다른 구역의 장기 체류 수요는 2025년 구역별 데이터로 확인해야 합니다.`;
+  $('v-text').innerHTML=`현재 가정(전기차 ${(ev*100).toFixed(1)}%, 충전 희망 ${Math.round(wish*100)}%, ${dayName})에서 공원 전체에 필요한 완속은 ${slow}기, 확인된 기존 완속은 ${EXIST_SLOW}기입니다. 전기차 비율 <span class="acc">${crossEv.toFixed(1)}%</span>부터 부족해지며, 급속은 기존 ${EXIST_FAST}기가 필요량 ${fast}기보다 많습니다. 충전기가 남쪽·서쪽 주차장에만 있어 북쪽·동쪽 구역의 장기 체류 수요는 2025년 구역별 데이터로 확인해야 합니다.`;
 }
 
 function tables(){
